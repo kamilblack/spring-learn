@@ -1,5 +1,6 @@
 package pl.kazimierczak.jakub.spring.learn.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 
     private static final Logger LOGGER = Logger.getLogger(DashboardController.class.getName());
 
+//    @Autowired
     private DashboardService dashboardService;
 
     public DashboardController(DashboardService dashboardService) {

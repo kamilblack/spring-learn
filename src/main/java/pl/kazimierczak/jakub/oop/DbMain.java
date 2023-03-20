@@ -5,12 +5,12 @@ public class DbMain {
     public static void main(String[] args) {
 
         DbRepository dbRepository = new DbRepository();
-        VipDbRepository vipDbRepository = new VipDbRepository();
+//        VipDbRepository vipDbRepository = new VipDbRepository();
 
         DbService dbService = new DbService(dbRepository);
-        VipDbService vipDbService = new VipDbService(vipDbRepository);
+//        VipDbService vipDbService = new VipDbService(vipDbRepository);
 
-        DbController dbController = new DbController(vipDbService);
+        DbController dbController = new DbController(dbService);
 
         dbController.dashboard();
     }
