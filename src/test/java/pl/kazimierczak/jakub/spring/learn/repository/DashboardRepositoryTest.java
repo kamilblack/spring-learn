@@ -21,6 +21,10 @@ class DashboardRepositoryTest {
 
 
         // When
+        DashboardEntity entity = new DashboardEntity();
+        entity.setName("ANIMALS");
+        entity.setSize("3");
+        dashboardRepository.save(entity);
         List<DashboardEntity> dashboards = dashboardRepository.findAll();
         System.out.println(dashboards);
 

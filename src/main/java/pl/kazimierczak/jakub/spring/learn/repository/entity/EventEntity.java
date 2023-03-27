@@ -3,20 +3,18 @@ package pl.kazimierczak.jakub.spring.learn.repository.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "DASHBOARDS")
-public class DashboardEntity {
+public class EventEntity {
 
     @Id
     @GeneratedValue
     private Long id;
 
+    private String city;
     private String name;
-    private String size;
 
-    public DashboardEntity() {
+    public EventEntity() {
     }
 
     public Long getId() {
@@ -27,6 +25,14 @@ public class DashboardEntity {
         this.id = id;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
     public String getName() {
         return name;
     }
@@ -35,20 +41,12 @@ public class DashboardEntity {
         this.name = name;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     @Override
     public String toString() {
-        return "DashboardEntity{" +
+        return "EventEntity{" +
                 "id=" + id +
+                ", city='" + city + '\'' +
                 ", name='" + name + '\'' +
-                ", size='" + size + '\'' +
                 '}';
     }
 }
