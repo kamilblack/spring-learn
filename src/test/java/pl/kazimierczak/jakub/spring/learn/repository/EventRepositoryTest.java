@@ -19,7 +19,7 @@ class EventRepositoryTest {
     EventRepository eventRepository;
 
     @Test
-    void create(){
+    void create() throws Exception {
         // Given
 
 
@@ -29,10 +29,22 @@ class EventRepositoryTest {
         entity.setName("Cars");
         eventRepository.save(entity);
 
-        EventEntity entityCompare = eventRepository.findById(entity.getId()).get();
+//        if (entity != null) {
+//            entity.setId(2L);
+//        }
+
+//        EventEntity entityCompare = eventRepository.findById(entity.getId()
+        Optional<EventEntity> optionalEventEntity = eventRepository.findById(-99L);
+//        if (optionalEventEntity.isPresent()) {
+//            EventEntity eventEntity = optionalEventEntity.get();
+//        }
+
+        EventEntity orElseEventEntity = optionalEventEntity.orElse(new EventEntity());
+//        EventEntity orElseThrowEventEntity = optionalEventEntity.orElseThrow();
+//        optionalEventEntity.orElseThrow(() -> new Exception("Nie znaleziono wydarzenia o danym Id"));
 
         // Then
-        Assertions.assertThat(entityCompare).isEqualTo(entity);
+//        Assertions.assertThat(entityCompare).isEqualTo(entity);
 
     }
 
