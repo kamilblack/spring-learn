@@ -31,6 +31,9 @@ public class CarModel {
 
     @Override
     public String toString() {
-        return super.toString();
+        return "CarModel{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

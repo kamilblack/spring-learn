@@ -38,6 +38,8 @@ class CarServiceTest {
 
         // When
         Optional<CarModel> optionalCarModel = carService.verify("Kia");
+//        Optional to wrapper zawierający <> - w tym przypadku CarModel
+        System.out.println("#### " + optionalCarModel);
         CarModel carModel = optionalCarModel.orElseThrow(() -> new Exception("unable to find car"));
 
         // Then
