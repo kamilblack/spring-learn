@@ -1,8 +1,8 @@
 package pl.kazimierczak.jakub.spring.learn.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.kazimierczak.jakub.spring.learn.service.DashboardService;
 import pl.kazimierczak.jakub.spring.learn.web.model.DashboardModel;
@@ -22,7 +22,14 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
         this.dashboardService = dashboardService;
     }
 
-    @GetMapping//http://localhost:8080/dashboard?name=monitoring&size=99
+    @GetMapping
+    public String dashboardView(){
+        LOGGER.info("dashboardView()");
+
+        return "dashboard.html";
+    }
+
+    @PostMapping // GET http://localhost:8080/dashboard?name=monitoring&size=99
 //    public String dashboard(String name, String size) {
     public String dashboard(DashboardModel dashboardModel) {
         LOGGER.info("dashboard(" + dashboardModel + ")");
