@@ -6,6 +6,8 @@ import pl.kazimierczak.jakub.spring.learn.repository.entity.DashboardEntity;
 import pl.kazimierczak.jakub.spring.learn.service.mapper.DashboardMapper;
 import pl.kazimierczak.jakub.spring.learn.web.model.DashboardModel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -49,6 +51,10 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
             return optionalDashboardModel;
         }
 
+    }
+
+    public List<DashboardModel> list() {
+        return new ArrayList<>();
     }
 }
 // TODO: 27.03.2023
