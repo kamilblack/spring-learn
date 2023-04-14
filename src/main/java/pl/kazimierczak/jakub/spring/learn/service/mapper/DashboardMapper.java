@@ -30,9 +30,13 @@ public class DashboardMapper {
     public DashboardModel from(DashboardEntity dashboardEntity){
         LOGGER.info("from(" + dashboardEntity + ")");
 
-        DashboardModel dashboardModel = new DashboardModel();
-        dashboardModel.setName(dashboardEntity.getName());
-        dashboardModel.setSize(dashboardEntity.getSize());
+//        DashboardModel dashboardModel = new DashboardModel();
+//        dashboardModel.setName(dashboardEntity.getName());
+//        dashboardModel.setSize(dashboardEntity.getSize());
+
+        ModelMapper modelMapper = new ModelMapper();
+        DashboardModel dashboardModel = modelMapper.map(dashboardEntity, DashboardModel.class);
+
 
         LOGGER.info("from(...) = " + dashboardModel);
 

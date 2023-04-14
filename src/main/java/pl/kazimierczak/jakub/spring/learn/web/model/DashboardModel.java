@@ -2,6 +2,8 @@ package pl.kazimierczak.jakub.spring.learn.web.model;
 
 public class DashboardModel {
 
+    private Long id;
+
     private String name;
     private String size;
 
@@ -11,6 +13,14 @@ public class DashboardModel {
     public DashboardModel(String name, String size) {
         this.name = name;
         this.size = size;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,7 +42,8 @@ public class DashboardModel {
     @Override
     public String toString() {
         return "DashboardModel{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", size='" + size + '\'' +
                 '}';
     }

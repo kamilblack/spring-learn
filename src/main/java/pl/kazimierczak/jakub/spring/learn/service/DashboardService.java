@@ -35,7 +35,8 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
 
         LOGGER.info("dashboard(...) = " + mappedDashboardModel);
 
-        return mappedDashboardModel;
+//        return mappedDashboardModel;
+        return dashboardModel;
     }
 
     public Optional<DashboardModel> change(String name) {
