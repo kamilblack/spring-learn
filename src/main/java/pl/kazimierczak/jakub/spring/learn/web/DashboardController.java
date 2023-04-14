@@ -28,7 +28,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     public String listView(ModelMap modelMap) {
         LOGGER.info("listView()");
         modelMap.addAttribute("elements", List.of("Dog","Cat","Lion"));
-        List<DashboardModel> dashboards = dashboardService.list();
+        List<DashboardModel> dashboards = dashboardService.listAll();
         modelMap.addAttribute("dashboards", dashboards);
 
         return "dashboards.html";
