@@ -43,4 +43,18 @@ class DashboardServiceTest {
         Assertions.assertThrows(Exception.class, () -> optionalDashboardModel.orElseThrow(() -> new Exception("Unable to find dashboard")));
 
     }
+
+    @Test
+    void dashboard() {
+        // Given
+        DashboardModel dashboardModel = new DashboardModel();
+
+
+        // When
+        DashboardModel createdDashboardModel = dashboardService.dashboard(dashboardModel);
+
+        // Then
+        Assertions.assertNotNull(createdDashboardModel, "createdDashboardModel is null");
+
+    }
 }
