@@ -3,7 +3,7 @@ package pl.kazimierczak.jakub.spring.learn.service;
 import org.springframework.stereotype.Service;
 import pl.kazimierczak.jakub.spring.learn.repository.DashboardRepository;
 import pl.kazimierczak.jakub.spring.learn.repository.entity.DashboardEntity;
-import pl.kazimierczak.jakub.spring.learn.web.DashboardController;
+import pl.kazimierczak.jakub.spring.learn.service.mapper.DashboardMapper;
 import pl.kazimierczak.jakub.spring.learn.web.model.DashboardModel;
 
 import java.util.Optional;
@@ -14,21 +14,28 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
 
     private static final Logger LOGGER = Logger.getLogger(DashboardService.class.getName());
 
-    private DashboardRepository dashboardRepository;
+    private final DashboardRepository dashboardRepository;
+    private final DashboardMapper dashboardMapper;
 
-    public DashboardService(DashboardRepository dashboardRepository) {
+    public DashboardService(DashboardRepository dashboardRepository, DashboardMapper dashboardMapper) {
         this.dashboardRepository = dashboardRepository;
+        this.dashboardMapper = dashboardMapper;
     }
 
     public DashboardModel dashboard(DashboardModel dashboardModel) {
         LOGGER.info("dashboard(" + dashboardModel + ")");
 
-        DashboardEntity dashboardEntity = new DashboardEntity();
-        dashboardEntity.setName(dashboardModel.getName());
-        dashboardEntity.setSize(dashboardModel.getSize());
-        dashboardRepository.save(dashboardEntity);
+//        DashboardEntity dashboardEntity = new DashboardEntity();
+//        dashboardEntity.setName(dashboardModel.getName());
+//        dashboardEntity.setSize(dashboardModel.getSize());
 
-        return null;
+        DashboardEntity dashboardEntity = dashboardMapper.from(dashboardModel);
+        DashboardEntity savedDashboardEntity = dashboardRepository.save(dashboardEntity);
+        DashboardModel mappedDashboardModel = dashboardMapper.from(savedDashboardEntity);
+
+        LOGGER.info("dashboard(...) = " + mappedDashboardModel);
+
+        return mappedDashboardModel;
     }
 
     public Optional<DashboardModel> change(String name) {
@@ -48,3 +55,7 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
 
 // TODO: 03.04.2023
 // Zrobić formularz dla CarController i zapisać w bazie danych - analogicznie jak dla DashboardService
+
+// TODO: 07.04.2023
+// Zrobić mapper dla Car
+// Dopisać testy - mapper'a

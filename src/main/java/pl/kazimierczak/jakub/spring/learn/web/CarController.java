@@ -10,7 +10,7 @@ import pl.kazimierczak.jakub.spring.learn.web.model.CarModel;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping(value = "/car")
+@RequestMapping(value = "/cars")
 public class CarController {
 
     private static final Logger LOGGER = Logger.getLogger(CarController.class.getName());
