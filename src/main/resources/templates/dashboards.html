@@ -6,12 +6,16 @@
 </head>
 <body>
 <div>
+    <div>
+        <a href="/dashboards/create">Add Dashboard</a>
+    </div>
     <h1>Dashboards List</h1>
     <div th:text="${elements}"></div>
-<!--    <div th:text="${dashboards}"></div>-->
+    <!--    <div th:text="${dashboards}"></div>-->
     <table>
         <thead>
         <tr>
+            <th> ID</th>
             <th> Name</th>
             <th> Size</th>
         </tr>
@@ -21,6 +25,7 @@
             <td colspan="2"> No Dashboards Available</td>
         </tr>
         <tr th:each="dashboard : ${dashboards}">
+            <td><span th:text="${dashboard.id}"> ID </span></td>
             <td><span th:text="${dashboard.name}"> Name </span></td>
             <td><span th:text="${dashboard.size}"> Size </span></td>
         </tr>

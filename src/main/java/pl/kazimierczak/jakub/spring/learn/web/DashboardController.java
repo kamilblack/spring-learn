@@ -2,6 +2,7 @@ package pl.kazimierczak.jakub.spring.learn.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 
     private static final Logger LOGGER = Logger.getLogger(DashboardController.class.getName());
 
-//    @Autowired
+    //    @Autowired
     private DashboardService dashboardService;
 
     public DashboardController(DashboardService dashboardService) {
@@ -27,7 +28,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     @GetMapping
     public String listView(ModelMap modelMap) {
         LOGGER.info("listView()");
-        modelMap.addAttribute("elements", List.of("Dog","Cat","Lion"));
+        modelMap.addAttribute("elements", List.of("Dog", "Cat", "Lion"));
         List<DashboardModel> dashboards = dashboardService.listAll();
         modelMap.addAttribute("dashboards", dashboards);
 
@@ -35,13 +36,13 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     }
 
     @GetMapping(value = "/create")
-    public String createView(){
+    public String createView() {
         LOGGER.info("createView()");
 
         return "dashboard.html";
     }
 
-    @PostMapping // GET http://localhost:8080/dashboards/create?name=monitoring&size=99
+    @PostMapping(value = "/create") // GET http://localhost:8080/dashboards/create?name=monitoring&size=99
 //    public String dashboard(String name, String size) {
     public String create(DashboardModel dashboardModel) {
         LOGGER.info("create(" + dashboardModel + ")");
