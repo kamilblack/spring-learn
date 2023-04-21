@@ -10,10 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarMapperTest {
 
+    private CarMapper carMapper = new CarMapper();
+
     @Test
     void fromModelToEntity() {
         // Given
-        CarMapper carMapper = new CarMapper();
+//        CarMapper carMapper = new CarMapper();
         CarModel carModel = new CarModel("Audi", 55000);
 
         // When
@@ -27,7 +29,7 @@ class CarMapperTest {
     @Test
     void fromEntityToModel() {
         // Given
-        CarMapper carMapper = new CarMapper();
+//        CarMapper carMapper = new CarMapper();
         CarEntity carEntity = new CarEntity("Fiat", 25000);
 
         // When
@@ -35,6 +37,24 @@ class CarMapperTest {
 
         // Then
         Assertions.assertNotNull(mappedCarModel, "mappedCarModel is null");
+
+    }
+
+    @Test
+    void givenCarEntity_whenFromCarEntityToCarModel_thenAttributesEqual() {
+        // Given
+        CarEntity carEntity = new CarEntity();
+        carEntity.setId(50L);
+        carEntity.setName("Seat");
+        carEntity.setPrice(3300);
+
+        // When
+        CarModel mappedCarModel = carMapper.from(carEntity);
+
+        // Then
+        assertEquals(carEntity.getId(), mappedCarModel.getId(), "IDs are not equals");
+        assertEquals(carEntity.getName(), mappedCarModel.getName(), "Names are not equals");
+        assertEquals(carEntity.getPrice(), mappedCarModel.getPrice(), "Prices are not equals");
 
     }
 }
