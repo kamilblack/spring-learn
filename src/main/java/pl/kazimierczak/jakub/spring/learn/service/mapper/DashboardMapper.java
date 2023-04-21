@@ -48,9 +48,11 @@ public class DashboardMapper {
 
     public List<DashboardModel> mapList(List<DashboardEntity> dashboardEntityList) {
 
-        ModelMapper modelMapper = new ModelMapper();
+//        ModelMapper modelMapper = new ModelMapper();
         List<DashboardModel> mappedDashboardList = dashboardEntityList.stream()
-                .map(dashboardEntity -> modelMapper.map(dashboardEntity, DashboardModel.class)).collect(Collectors.toList());
+//                .map(dashboardEntity -> modelMapper.map(dashboardEntity, DashboardModel.class))
+                .map(this::from)
+                .collect(Collectors.toList());
 
         return mappedDashboardList;
     }
