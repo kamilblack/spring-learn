@@ -2,6 +2,8 @@ package pl.kazimierczak.jakub.spring.learn.web.model;
 
 public class CarModel {
 
+    private Long id;
+
     private String name;
     private int price;
 
@@ -11,6 +13,14 @@ public class CarModel {
     public CarModel(String name, int price) {
         this.name = name;
         this.price = price;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -32,7 +42,8 @@ public class CarModel {
     @Override
     public String toString() {
         return "CarModel{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", price=" + price +
                 '}';
     }
