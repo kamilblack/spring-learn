@@ -2,10 +2,7 @@ package pl.kazimierczak.jakub.spring.learn.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.kazimierczak.jakub.spring.learn.service.DashboardService;
 import pl.kazimierczak.jakub.spring.learn.web.model.DashboardModel;
 
@@ -59,8 +56,8 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     public String read(Long id, ModelMap modelMap) {
         LOGGER.info("read(" + id + ")");
 
-//        DashboardModel dashboardModel = dashboardService.read(id);
-        DashboardModel dashboardModel = new DashboardModel("VISA", "98000");
+        DashboardModel dashboardModel = dashboardService.read(id);
+//        DashboardModel dashboardModel = new DashboardModel("VISA", "98000");
         modelMap.addAttribute("dashboard", dashboardModel);
 
         return "dashboard";
@@ -73,3 +70,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 // TODO: 14.04.2023
 // https://www.baeldung.com/thymeleaf-list - wyświetlić listę dashboardów w formie tabeli
 // weryfikacja cars - czy mapper jest ok
+
+// TODO: 21.04.2023
+// Zaimplementować metodę read() w service
+// Dodać linki delete and update + implementation
