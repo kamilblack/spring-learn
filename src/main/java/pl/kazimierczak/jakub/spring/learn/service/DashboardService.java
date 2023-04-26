@@ -64,7 +64,14 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
     }
 
     public DashboardModel read(Long id) {
-        return null;
+        LOGGER.info("read()");
+
+        DashboardEntity dashboardEntity = dashboardRepository.getById(id);
+        DashboardModel mappedDashboardModel = dashboardMapper.from(dashboardEntity);
+
+        LOGGER.info("read(...) " + mappedDashboardModel);
+
+        return mappedDashboardModel;
     }
 }
 // TODO: 27.03.2023
