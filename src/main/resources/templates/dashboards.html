@@ -15,9 +15,10 @@
     <table>
         <thead>
         <tr>
-            <th> ID</th>
-            <th> Name</th>
-            <th> Size</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Read</th>
         </tr>
         </thead>
         <tbody>
@@ -28,6 +29,10 @@
             <td><span th:text="${dashboard.id}"> ID </span></td>
             <td><span th:text="${dashboard.name}"> Name </span></td>
             <td><span th:text="${dashboard.size}"> Size </span></td>
+            <td>
+<!--                <a href="/dashboards/create">Add Dashboard</a>-->
+                <a th:href="@{/dashboards/read(id=${dashboard.id})}">read</a>
+            </td>
         </tr>
         </tbody>
     </table>

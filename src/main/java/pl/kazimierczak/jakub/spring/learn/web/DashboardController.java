@@ -36,8 +36,10 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     }
 
     @GetMapping(value = "/create")
-    public String createView() {
+    public String createView(ModelMap modelMap) {
         LOGGER.info("createView()");
+
+        modelMap.addAttribute("dashboard", new DashboardModel());
 
         return "dashboard.html";
     }
@@ -52,6 +54,18 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 
         return "dashboard.html";
     }
+
+    @GetMapping(value = "/read")
+    public String read(Long id, ModelMap modelMap) {
+        LOGGER.info("read(" + id + ")");
+
+//        DashboardModel dashboardModel = dashboardService.read(id);
+        DashboardModel dashboardModel = new DashboardModel("VISA", "98000");
+        modelMap.addAttribute("dashboard", dashboardModel);
+
+        return "dashboard";
+    }
+
 }
 // TODO: 03.03.2023
 // Analogicznie do dashboardcontroller stworzyć nowy włąsny kontroler obsługujący żadanie get protokołu http oraz przyjmujący parametry żądania

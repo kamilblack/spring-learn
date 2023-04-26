@@ -62,6 +62,10 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
 
         return mappedDashboardModelList;
     }
+
+    public DashboardModel read(Long id) {
+        return null;
+    }
 }
 // TODO: 27.03.2023
 // Zaprezentować działanie Optional na przykładzie własnych klas i metod
