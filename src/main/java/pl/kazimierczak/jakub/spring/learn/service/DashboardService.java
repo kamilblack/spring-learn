@@ -63,15 +63,26 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
         return mappedDashboardModelList;
     }
 
-    public DashboardModel read(Long id) {
+    public DashboardModel read(Long id) throws Exception {
         LOGGER.info("read()");
 
-        DashboardEntity dashboardEntity = dashboardRepository.getById(id);
+        Optional<DashboardEntity> optionalDashboardEntity = dashboardRepository.findById(id);
+        DashboardEntity dashboardEntity = optionalDashboardEntity.orElseThrow(
+                () -> new Exception("Unable to find dashboard with id " + id));
+
         DashboardModel mappedDashboardModel = dashboardMapper.from(dashboardEntity);
 
         LOGGER.info("read(...) " + mappedDashboardModel);
 
         return mappedDashboardModel;
+    }
+
+    public void delete(Long id) {
+        LOGGER.info("delete(" + id + ")");
+
+        dashboardRepository.deleteById(id);
+
+        LOGGER.info("delete(...)");
     }
 }
 // TODO: 27.03.2023

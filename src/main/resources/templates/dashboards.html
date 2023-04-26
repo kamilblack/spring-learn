@@ -33,6 +33,12 @@
 <!--                <a href="/dashboards/create">Add Dashboard</a>-->
                 <a th:href="@{/dashboards/read(id=${dashboard.id})}">read</a>
             </td>
+            <td>
+                <a th:href="@{/dashboards/update(id=${dashboard.id})}">update</a>
+            </td>
+            <td>
+                <a th:href="@{/dashboards/delete(id=${dashboard.id})}">delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

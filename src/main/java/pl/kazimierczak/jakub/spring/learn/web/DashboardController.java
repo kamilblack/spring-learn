@@ -53,7 +53,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     }
 
     @GetMapping(value = "/read")
-    public String read(Long id, ModelMap modelMap) {
+    public String read(Long id, ModelMap modelMap) throws Exception {
         LOGGER.info("read(" + id + ")");
 
         DashboardModel dashboardModel = dashboardService.read(id);
@@ -61,6 +61,23 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
         modelMap.addAttribute("dashboard", dashboardModel);
 
         return "dashboard";
+    }
+
+    @GetMapping(value = "/delete")
+    public String delete(Long id){
+        LOGGER.info("delete(" + id + ")");
+
+        dashboardService.delete(id);
+
+//        List<DashboardModel> dashboards = dashboardService.listAll();
+//        modelMap.addAttribute("dashboards", dashboards);
+
+        return "redirect:/dashboards";
+    }
+
+    @PostMapping(value = "/update ")
+    public void update(){
+
     }
 
 }
