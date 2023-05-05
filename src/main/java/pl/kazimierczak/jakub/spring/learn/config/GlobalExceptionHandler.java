@@ -30,3 +30,4 @@ public class GlobalExceptionHandler {
     }
 
 }
+// https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc - wszystkie sposoby globalnej obsługi wyjątków
