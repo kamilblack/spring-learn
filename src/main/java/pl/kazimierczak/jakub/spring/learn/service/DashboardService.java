@@ -1,6 +1,8 @@
 package pl.kazimierczak.jakub.spring.learn.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import pl.kazimierczak.jakub.spring.learn.api.exception.DashboardException;
 import pl.kazimierczak.jakub.spring.learn.repository.DashboardRepository;
 import pl.kazimierczak.jakub.spring.learn.repository.entity.DashboardEntity;
 import pl.kazimierczak.jakub.spring.learn.service.mapper.DashboardMapper;
@@ -63,15 +65,27 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
         return mappedDashboardModelList;
     }
 
-    public DashboardModel read(Long id) {
+    public DashboardModel read(Long id) throws DashboardException {
         LOGGER.info("read()");
 
-        DashboardEntity dashboardEntity = dashboardRepository.getById(id);
+        Optional<DashboardEntity> optionalDashboardEntity = dashboardRepository.findById(id);
+        DashboardEntity dashboardEntity = optionalDashboardEntity.orElseThrow(
+                () -> new DashboardException("Unable to find dashboard with id " + id));
+
         DashboardModel mappedDashboardModel = dashboardMapper.from(dashboardEntity);
 
         LOGGER.info("read(...) " + mappedDashboardModel);
 
         return mappedDashboardModel;
+    }
+
+    public void delete(Long id) throws Exception {
+        LOGGER.info("delete(" + id + ")");
+        if (id == null) throw new Exception("Delete id is null");
+
+        dashboardRepository.deleteById(id);
+
+        LOGGER.info("delete(...)");
     }
 }
 // TODO: 27.03.2023

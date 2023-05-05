@@ -3,6 +3,7 @@ package pl.kazimierczak.jakub.spring.learn.web;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import pl.kazimierczak.jakub.spring.learn.api.exception.DashboardException;
 import pl.kazimierczak.jakub.spring.learn.service.DashboardService;
 import pl.kazimierczak.jakub.spring.learn.web.model.DashboardModel;
 
@@ -53,7 +54,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     }
 
     @GetMapping(value = "/read")
-    public String read(Long id, ModelMap modelMap) {
+    public String read(Long id, ModelMap modelMap) throws DashboardException {
         LOGGER.info("read(" + id + ")");
 
         DashboardModel dashboardModel = dashboardService.read(id);
@@ -61,6 +62,23 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
         modelMap.addAttribute("dashboard", dashboardModel);
 
         return "dashboard";
+    }
+
+    @GetMapping(value = "/delete")
+    public String delete(Long id) throws Exception {
+        LOGGER.info("delete(" + id + ")");
+
+        dashboardService.delete(id);
+
+//        List<DashboardModel> dashboards = dashboardService.listAll();
+//        modelMap.addAttribute("dashboards", dashboards);
+
+        return "redirect:/dashboards";
+    }
+
+    @PostMapping(value = "/update ")
+    public void update(){
+
     }
 
 }
