@@ -1,0 +1,37 @@
+1. Zrobićanalizę aplikacji (opis, rzeczowniki, czasowniki)
+
+https://www.juniorjavadeveloper.pl/2020/11/17/stop-zanim-zaczniesz-pisac-kod-zastanow-sie-co-chcesz-kodowac-analiza-projekt-i-implementacja/
+https://www.juniorjavadeveloper.pl/2023/02/01/od-czego-zaczac-tworzenie-aplikacji-przestan-pisac-kod-zrodlowy-praktyczny-przyklad/
+
+2. Na start.spring.io wygenerować aplikację springową
+3. Wygenerowaną aplikację umieścić na GitHub
+4. Stworzyć warstwy dla aplikacji
+
+https://www.juniorjavadeveloper.pl/2020/05/13/aplikacje-java-maja-warstwy-jak-tort-urodzinowy-aplikacja-trojwarstwowa/
+
+5. Dla rzeczowników stworzyć modele i encje hibernate
+6. Dla encji stworzyć @Repository
+7. Dla Repository i Entity stworzyć testy jednostkowe
+8. Stworzyć mappery dla model i entity
+9. Napisać testy jednostkowe dla mapperów
+10. Dla warstwy Service wstrzyknąć zależności i zaimplementować metody CRUD
+11. Napisac testy jednostkowe dla warstwy Service
+12. Stworzyć kontrolery dla modeli
+13. Napisać testy jednostkowe dla kontrolerów
+14.
+
+Model/Rzeczownik
+
+Bank
+Client
+Account
+
+3 x Models
+    4 x layers
+        5 x methods
+            15 x lines
+
+4 x JUnit
+
+3 x 4 x 5 x 15 x 4
+

@@ -92,3 +92,6 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 // TODO: 21.04.2023
 // Zaimplementować metodę read() w service
 // Dodać linki delete and update + implementation
+
+// TODO: 05.05.2023
+// Zaimplementować endpointa update
