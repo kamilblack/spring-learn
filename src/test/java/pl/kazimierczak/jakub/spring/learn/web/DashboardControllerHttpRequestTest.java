@@ -8,7 +8,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class HttpRequestDashboardControllerTest {
+class DashboardControllerHttpRequestTest {
 
     @LocalServerPort
     private int port;
@@ -29,3 +29,6 @@ class HttpRequestDashboardControllerTest {
 
     }
 }
+
+// TODO: 11.05.2023
+// Sprawdzić czym jest RestTemplate
