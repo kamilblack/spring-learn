@@ -86,7 +86,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 
         return "dashboard";
     }
-    @PostMapping(value = "/update*")
+    @PostMapping(value = "/update")
     public String updateById(DashboardModel dashboardModel) throws DashboardException {
         LOGGER.info("updateById(" + dashboardModel + ")");
 
