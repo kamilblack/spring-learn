@@ -26,7 +26,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
     @GetMapping
     public String listView(ModelMap modelMap) {
         LOGGER.info("listView()");
-        modelMap.addAttribute("elements", List.of("Dog", "Cat", "Lion"));
+//        modelMap.addAttribute("elements", List.of("Dog", "Cat", "Lion"));
         List<DashboardModel> dashboards = dashboardService.listAll();
         modelMap.addAttribute("dashboards", dashboards);
 
@@ -50,7 +50,7 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
 
         dashboardService.dashboard(dashboardModel);
 
-        return "dashboard.html";
+        return "redirect:/dashboards/create";
     }
 
     @GetMapping(value = "/read")
@@ -76,9 +76,23 @@ public class DashboardController {//służy do przyjmowania danych od usera oraz
         return "redirect:/dashboards";
     }
 
-    @PostMapping(value = "/update ")
-    public void update(){
+    @GetMapping(value = "/update")
+    public String update(Long id, ModelMap modelMap) throws DashboardException {
+        LOGGER.info("update(" + id + ")");
 
+        DashboardModel dashboardModel = dashboardService.read(id);
+//        DashboardModel dashboardModel = new DashboardModel("VISA", "98000");
+        modelMap.addAttribute("dashboard", dashboardModel);
+
+        return "dashboard";
+    }
+    @PostMapping(value = "/update")
+    public String updateById(DashboardModel dashboardModel) throws DashboardException {
+        LOGGER.info("updateById(" + dashboardModel + ")");
+
+        dashboardService.update(dashboardModel);
+
+        return "redirect:/dashboards";
     }
 
 }

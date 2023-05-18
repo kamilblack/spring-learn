@@ -87,6 +87,22 @@ public class DashboardService {//logika biznesowa aplikacji np. czy można wykon
 
         LOGGER.info("delete(...)");
     }
+
+    public void update(DashboardModel dashboardModel) throws DashboardException {
+        LOGGER.info("update(" + dashboardModel + ")");
+
+        Optional<DashboardEntity> optionalDashboardEntity = dashboardRepository.findById(dashboardModel.getId());
+        DashboardEntity dashboardEntity = optionalDashboardEntity.orElseThrow(
+                () -> new DashboardException("Unable to find dashboard with id " + dashboardModel.getId()));
+
+        dashboardEntity.setName(dashboardModel.getName());
+        dashboardEntity.setSize(dashboardModel.getSize());
+
+        dashboardRepository.save(dashboardEntity);
+
+        LOGGER.info("update(...) " + dashboardEntity);
+
+    }
 }
 // TODO: 27.03.2023
 // Zaprezentować działanie Optional na przykładzie własnych klas i metod
